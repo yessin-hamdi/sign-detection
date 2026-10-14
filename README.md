@@ -82,7 +82,16 @@ Results on the validation set:
 
 
 
-The 1280 model misses about 4 signs out of 184, compared with about 18 at 640, and its boxes fit more tightly. I kept it. The test set has not been used yet; it is reserved for a single final evaluation once all decisions are made.
+The 1280 model misses about 4 signs out of 184, compared with about 18 at 640, and its boxes fit more tightly. I kept it.
+To check where the improvement came from, I split the validation signs by size and compared both models (confidence threshold 0.25):
+
+| Signs        | 640           | 1280          |
+|--------------|---------------|---------------|
+| Under 32 px  | 53/69 (0.768) | 68/69 (0.986) |
+| 32 px and up | 112/115 (0.974) | 114/115 (0.991) |
+
+At 640, the model missed almost one small sign in four, while finding nearly all the large ones. Of the 17 extra signs found at 1280, 15 are small. Higher resolution did not make the model better in general; it fixed the small-sign problem specifically.
+
 
 
 
@@ -132,7 +141,7 @@ models/
 
 
 
-\- \[ ] Compare recall on small signs between the 640 and 1280 models
+\- \[x] Compare recall on small signs between the 640 and 1280 models
 
 \- \[ ] Run the final evaluation on the test set
 
