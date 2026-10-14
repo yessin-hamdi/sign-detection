@@ -91,6 +91,7 @@ To check where the improvement came from, I split the validation signs by size a
 | 32 px and up | 112/115 (0.974) | 114/115 (0.991) |
 
 At 640, the model missed almost one small sign in four, while finding nearly all the large ones. Of the 17 extra signs found at 1280, 15 are small. Higher resolution did not make the model better in general; it fixed the small-sign problem specifically.
+*After all decisions were made on the validation set, I evaluated the 1280 model once on the test set (137 images, 200 signs): precision 0.970, recall 0.972, mAP50 0.990, mAP50-95 0.857. These are slightly below the validation scores, which is expected since the best checkpoint was selected on validation. On the test set, the model finds 71 of 74 small signs and 125 of 126 larger ones.*
 
 
 
